@@ -1,0 +1,112 @@
+
+  /* OFFERS MARQUEE SECTION */
+  .offers-bar {
+    background: #2563eb;
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  .offers-track {
+    display: flex;
+    gap: 50px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 20s linear infinite;
+  }
+  .offer-item {
+    flex: 0 0 auto;
+    background: #3b82f6;
+    padding: 8px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+    user-select: none;
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* MAIN PRODUCTS GRID */
+  main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px 40px;
+    color: #1e293b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  h2.section-title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 20px;
+    border-left: 5px solid #3b82f6;
+    padding-left: 12px;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 30px;
+  }
+  .product-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+    outline-offset: 2px;
+  }
+  .product-card:hover,
+  .product-card:focus-visible {
+    box-shadow: 0 8px 16px rgba(59,130,246,0.4);
+  }
+  .product-image {
+    background: #e0e7ff;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .product-image img {
+    max-height: 140px;
+    object-fit: contain;
+  }
+  .product-info {
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: #1e293b;
+  }
+  .product-description {
+    font-size: 0.9rem;
+    color: #475569;
+    flex-grow: 1;
+    margin-bottom: 12px;
+  }
+  .product-price {
+    font-weight: 700;
+    color: #3b82f6;
+    font-size: 1.1rem;
+  }
+  @media (max-width: 700px) {
+    .product-card {
+      max-width: 100%;
+    }
+  }
