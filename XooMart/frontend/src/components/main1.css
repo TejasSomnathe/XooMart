@@ -8,6 +8,8 @@ body {
 .container {
   text-align: center;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
   /* background-color: #cc74ff; */
 }
 

@@ -2,12 +2,12 @@ body {
   font-family: Arial, sans-serif;
   background: #fff;
   color: #111827;
-  margin: 24px;
+  margin: 0;
 }
 h1 {
   font-weight: 800;
   font-size: 24px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 .container {
   display: flex;
