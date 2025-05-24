@@ -1,4 +1,7 @@
 import "./footer.css"
+// import instagram from "../assets/instagram.jpeg"
+// import facebook from "../assets/facebook.png"
+// import twitter from "../assets/twitter.png"
 
 import React from 'react'
 
@@ -13,9 +16,9 @@ function Footer() {
           Connecting you with local stores and products in your district. Find what you need, where you need it.
         </p>
         <div className="social-icons">
-          <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+          {/* <a href="#" aria-label="Facebook"> <img src={instagram} alt="" /></a>
+          <a href="#" aria-label="Twitter"> <img src={facebook} alt="" /></a>
+          <a href="#" aria-label="Instagram"><img src={twitter} alt="" /></a> */}
         </div>
       </div>
 

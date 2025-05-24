@@ -22,7 +22,7 @@ function App() {
       <Main3 />
       <Main4 />
       <Footer />
-      <Stores />
+      
       
     </>
   )
