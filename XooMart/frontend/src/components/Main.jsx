@@ -1,6 +1,7 @@
   import React from 'react' 
 import "./main.css"
 import AnimatedContent from '../AnimationComponent/AnimatedContent'
+import FadeContent from '../AnimationComponent/FadeContent'
 
 
 function Main() {
@@ -47,7 +48,11 @@ function Main() {
     </div></AnimatedContent>
   </section>
 
-  <section className="search-section">
+
+
+  
+<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+    <section className="search-section">
     <form className="search-form" aria-label="Find What You Need">
       <h2 className="sr-only">Find What You Need</h2>
       <div className="input-group search-product">
@@ -71,6 +76,8 @@ function Main() {
       </button>
     </form>
   </section>
+</FadeContent>
+ 
 </>
   )
 }

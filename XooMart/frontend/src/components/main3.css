@@ -1,65 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4ff;
-    padding: 20px;
+  font-family: Arial, sans-serif;
+
+  padding: 20px;
 }
 
 .container {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 h1 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
+  font-size: 2.5em;
+  margin-bottom: 30px;
 }
 
 .services {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .service {
-    max-width: 300px;
+  max-width: 300px;
 }
 
 .icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #007bff; /* Customize the color */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #007bff; /* Customize the color */
 }
 
 .search-icon {
-    background-image: url('search-icon.png'); /* Replace with actual icon */
-    background-size: 40px;
-    background-repeat: no-repeat;
+  background-image: url("search-icon.png"); /* Replace with actual icon */
+  background-size: 40px;
+  background-repeat: no-repeat;
 }
 
 .location-icon {
-    background-image: url('location-icon.png'); /* Replace with actual icon */
-    background-size: 40px;
-    background-repeat: no-repeat;
+  background-image: url("location-icon.png"); /* Replace with actual icon */
+  background-size: 40px;
+  background-repeat: no-repeat;
 }
 
 .shop-icon {
-    background-image: url('shop-icon.png'); /* Replace with actual icon */
-    background-size: 40px;
-    background-repeat: no-repeat;
+  background-image: url("shop-icon.png"); /* Replace with actual icon */
+  background-size: 40px;
+  background-repeat: no-repeat;
 }
 
 h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
 p {
-    font-size: 1em;
-    color: #555;
+  font-size: 1em;
+  color: #555;
 }

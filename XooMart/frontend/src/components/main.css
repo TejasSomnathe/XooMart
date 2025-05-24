@@ -90,7 +90,8 @@ body {
 .search-section {
   max-width: 48rem;
   margin: -2.5rem auto 0;
-  padding: 0 1rem 2rem;
+  /* padding: 0 1rem 2rem; */
+  box-shadow: 0 4px 8px rgba(86, 67, 227, 0.658);
 }
 
 .search-form {
