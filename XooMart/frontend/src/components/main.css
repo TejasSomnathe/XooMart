@@ -3,9 +3,8 @@
 body {
   background-color: #f9fafb;
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   color: #111827;
 }
 
@@ -33,10 +32,11 @@ body {
 
 .hero-subtitle {
   margin-top: 0.75rem;
-  font-size: 0.875rem; /* 14px */
+  font-size: 1.4rem; /* 14px */
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;
+  color: rgb(0, 249, 166);
 }
 
 .hero-buttons {
@@ -96,8 +96,7 @@ body {
 .search-form {
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   padding: 1rem 1.5rem;
   display: flex;
   flex-wrap: wrap;
