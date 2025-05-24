@@ -5,21 +5,26 @@ function Header() {
   return (
     <>
     <div className='header'>
-        <div className="logo" tabindex="0">
-          <img className='logo-image' src={BeandLogo} alt="" />
-        </div>
-         <div className="search-container">
-            <input type="text" placeholder="Search..." aria-label="Search" />
-            <button aria-label="Search Button" title="Search">
-            🔍
-            </button>
-         </div>
-        <div className="header-buttons">
-            <button type="button">Login</button>
-            <button type="button">Create Shop</button>
-            <button type="button">About Us</button>
+        <div className="header-left">
+          XooMart
         </div>
         
+        <div className="header-mid">
+            <div className='header-mid-left'>
+              <button>Home</button>
+              <button>Product</button>
+              <button>Store</button>
+            </div>
+          
+            <div className='header-mid-right'>
+              <input type="text" placeholder='Search' />
+            </div>
+        </div>
+        
+        <div className="header-right">
+          <button>cart</button>
+          <button>Login</button>
+        </div>
     </div>
     </>
   )
