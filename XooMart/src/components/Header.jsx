@@ -17,12 +17,13 @@ function Header() {
             </div>
           
             <div className='header-mid-right'>
-              <input type="text" placeholder='Search' />
+              <input type="text" placeholder='Search Product' />
+              <button>🔍</button>
             </div>
         </div>
         
         <div className="header-right">
-          <button>cart</button>
+          <button>Cart</button>
           <button>Login</button>
         </div>
     </div>

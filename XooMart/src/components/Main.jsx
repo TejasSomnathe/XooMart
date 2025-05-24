@@ -1,64 +1,66 @@
 import React from 'react'
 import "./main.css"
-import men1 from "../assets/men1.jpeg"
-import clothsDress from "../assets/clothsDress.jpg"
+
 
 function Main() {
   return (
     <>
-     
+    <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Products Search</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="hero-section">
+    <h1 class="hero-title">
+      Find Products in Local <br />Stores Near You
+    </h1>
+    <p class="hero-subtitle">
+      Discover what's available in your neighborhood and shop online or in-store
+    </p>
+    <div class="hero-buttons">
+      <button class="browse-btn" type="button">
+        <i class="fas fa-box-open"></i>
+        Browse Products
+      </button>
+      <input class="hero-input" type="text" aria-label="Input field" />
+    </div>
+  </section>
 
-<section class="offers-bar" aria-label="Shop Offers">
-  <div class="offers-track" aria-live="polite" aria-atomic="true" aria-relevant="all">
-    <div class="offer-item">🔥 Flash Sale 40% OFF on All T-Shirts</div>
-    <div class="offer-item">🎉 Buy 1 Get 1 Free on Selected Shirts</div>
-    <div class="offer-item">📱 New Mobile Phone Models Arrived</div>
-    <div class="offer-item">🚚 Free Shipping on Orders Over $50</div>
-    <div class="offer-item">⏰ Limited Time Offer: Extra 10% OFF</div>
-    <div class="offer-item">🔥 Flash Sale 40% OFF on All T-Shirts</div>
-    <div class="offer-item">🎉 Buy 1 Get 1 Free on Selected Shirts</div>
-  </div>
-</section>
+  <section class="search-section">
+    <form class="search-form" aria-label="Find What You Need">
+      <h2 class="sr-only">Find What You Need</h2>
+      <div class="input-group search-product">
+        <input
+          type="search"
+          placeholder="Search for products..."
+          aria-label="Search for products"
+        />
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="input-group search-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <input
+          type="text"
+          placeholder="Your location"
+          aria-label="Your location"
+        />
+      </div>
+      <button type="submit" class="search-btn">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </form>
+  </section>
+</body>
+</html>
 
-<main>
-  <h2 class="section-title">Featured Products</h2>
-  <div class="products-grid">
-    <article class="product-card" tabindex="0" aria-label="T-Shirt Product">
-      <div class="product-image">
-        <img src={men1} alt="T-Shirt" />
-      </div>
-      <div class="product-info">
-        <div class="product-name">Classic T-Shirt (combo)</div>
-        <div class="product-description">Comfortable cotton t-shirt available in multiple colors.</div>
-        <div class="product-price">$19.99</div>
-      </div>
-    </article>
-
-    <article class="product-card" tabindex="0" aria-label="Shirt Product">
-      <div class="product-image">
-        <img src={clothsDress} alt="Shirt" />
-      </div>
-      <div class="product-info">
-        <div class="product-name">One piece western top</div>
-        <div class="product-description">Elegant Top perfect for small events.</div>
-        <div class="product-price">$29.99</div>
-      </div>
-    </article>
-
-    <article class="product-card" tabindex="0" aria-label="Mobile Phone Product">
-      <div class="product-image">
-        <img src="https://via.placeholder.com/160x140?text=Mobile+Phone" alt="Mobile Phone" />
-      </div>
-      <div class="product-info">
-        <div class="product-name">Smartphone X100</div>
-        <div class="product-description">Latest model with cutting-edge features and sleek design.</div>
-        <div class="product-price">$499.99</div>
-      </div>
-    </article>
-  </div>
-</main>
-
-    </>
+</>
   )
 }
 
