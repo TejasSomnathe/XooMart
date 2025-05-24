@@ -1,5 +1,5 @@
 import "./main2.css";
-
+import ScrollFloat from '../AnimationComponent/ScrollFloat';
 import React from 'react'
 
 function Main2() {
@@ -7,7 +7,10 @@ function Main2() {
  <>
     <div className="container">
         <h1>Featured Products</h1>
-        <div className="products">
+       
+       <div className="products">
+
+          
             <div className="product-item">
                 <img src="smartphone.jpg" alt="Smartphone X" />
                 <h2>Smartphone X</h2>
@@ -44,6 +47,7 @@ function Main2() {
                 <button className="btn">View Details</button>
                 <button className="btn add-to-cart">Add to Cart</button>
             </div>
+     
         </div>
         <button className="btn view-all">View All</button>
     </div>
