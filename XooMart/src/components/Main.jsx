@@ -5,18 +5,7 @@ import "./main.css"
 function Main() {
   return (
     <>
-    <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Local Products Search</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+    
   <section class="hero-section">
     <h1 class="hero-title">
       Find Products in Local <br />Stores Near You
@@ -26,10 +15,14 @@ function Main() {
     </p>
     <div class="hero-buttons">
       <button class="browse-btn" type="button">
-        <i class="fas fa-box-open"></i>
+        🛍️
         Browse Products
       </button>
-      <input class="hero-input" type="text" aria-label="Input field" />
+      <button class="browse-btn" type="button">
+        🏪
+        Create Store
+      </button>
+     
     </div>
   </section>
 
@@ -57,8 +50,7 @@ function Main() {
       </button>
     </form>
   </section>
-</body>
-</html>
+
 
 </>
   )

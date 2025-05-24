@@ -23,7 +23,7 @@ function Header() {
         </div>
         
         <div className="header-right">
-          <button>Cart</button>
+          <button>🛒</button>
           <button>Login</button>
         </div>
     </div>
