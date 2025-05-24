@@ -8,6 +8,7 @@ import Main1 from './components/Main1.jsx'
 import Main2 from './components/Main2.jsx'
 import Main3 from './components/Main3.jsx'
 import Main4 from './components/Main4.jsx'
+import Stores from './components/Stores/Stores.jsx'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
       <Main3 />
       <Main4 />
       <Footer />
+      <Stores />
       
     </>
   )
