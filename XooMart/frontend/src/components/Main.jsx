@@ -24,7 +24,7 @@ function Main() {
   >
     
     <h1 className="hero-title">
-      Find Products in Local <br />Stores Near You
+      Find Products in Local Stores Near You And<br /> Create Your Own Store
     </h1>
     <p className="hero-subtitle">
       Discover what's available in your neighborhood and shop online or in-store

@@ -31,7 +31,7 @@ function Main3() {
     distance={100}
     direction="vertical"
     reverse={false}
-    delay={400}
+    delay={350}
     config={{ tension: 90, friction: 20 }}
     initialOpacity={0.2}
     animateOpacity
@@ -49,7 +49,7 @@ function Main3() {
     distance={100}
     direction="vertical"
     reverse={false}
-    delay={600}
+    delay={500}
     config={{ tension: 90, friction: 20 }}
     initialOpacity={0.2}
     animateOpacity
@@ -60,6 +60,24 @@ function Main3() {
                 <div className="icon shop-icon"></div>
                 <h2>Shop Your Way</h2>
                 <p>Choose to buy online or visit the store in person.</p>
+            </div>
+</AnimatedContent>
+
+ <AnimatedContent
+    distance={100}
+    direction="vertical"
+    reverse={false}
+    delay={650}
+    config={{ tension: 90, friction: 20 }}
+    initialOpacity={0.2}
+    animateOpacity
+    scale={0.7}
+    threshold={0.1}
+  >
+            <div className="service">
+                <div className="icon shop-icon"></div>
+                <h2>Save Time & Money</h2>
+                <p>Save time of traveling and difficulties to serching in market</p>
             </div>
 </AnimatedContent>
         </div>

@@ -11,7 +11,7 @@ function Footer() {
       <footer>
     <div className="footer-container">
       <div className="footer-section logo-section">
-        <h2>LocalFinder</h2>
+        <h2>XooMart</h2>
         <p>
           Connecting you with local stores and products in your district. Find what you need, where you need it.
         </p>
@@ -57,7 +57,7 @@ function Footer() {
     </div>
 
     <hr />
-    <p className="footer-bottom">© 2025 LocalFinder. All rights reserved.</p>
+    <p className="footer-bottom">© 2025 XooMart. All rights reserved.</p>
   </footer></>
   )
 }
