@@ -12,6 +12,12 @@ const userSchema = new Schema(
       trim: true,
       index: true,
     },
+    shopname: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
     email: {
       type: String,
       required: true,
@@ -25,19 +31,11 @@ const userSchema = new Schema(
       trim: true,
       index: true,
     },
-    avatar: {
-      type: String, //cloudnary url
-      required: true,
-    },
-    coverImage: {
+
+    shopImage: {
       type: String, //cloudnary url
     },
-    whachHistory: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Video",
-      },
-    ],
+
     password: {
       type: String,
       required: [true, "Password is required"],
