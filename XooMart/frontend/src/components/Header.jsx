@@ -1,6 +1,15 @@
 import React from 'react'
 import BeandLogo from '../assets/BeandLogo.png'
 import "./header.css"
+import Dock from '../AnimationComponent/Dock.jsx';
+
+const items = [
+    { icon: "", label: 'Home', onClick: () => alert('Home!') },
+    { icon: "", label: 'Archive', onClick: () => alert('Archive!') },
+    { icon: "", label: 'Profile', onClick: () => alert('Profile!') },
+    { icon: "", label: 'Settings', onClick: () => alert('Settings!') },
+  ];
+
 function Header() {
   return (
     <>
@@ -15,6 +24,8 @@ function Header() {
               <button>Product</button>
               <button>Store</button>
             </div>
+
+
           
             <div className='header-mid-right'>
               <input type="text" placeholder='Search Product' />
@@ -26,6 +37,15 @@ function Header() {
           <button>🛒</button>
           <button>Login</button>
         </div>
+    </div>
+    <div className="dock">
+      
+        <Dock className='dock'
+          items={items}
+          panelHeight={10}
+          baseItemSize={20}
+          magnification={0}
+        />
     </div>
     </>
   )

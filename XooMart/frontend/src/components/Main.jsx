@@ -2,11 +2,16 @@
 import "./main.css"
 import AnimatedContent from '../AnimationComponent/AnimatedContent'
 import FadeContent from '../AnimationComponent/FadeContent'
+ import Dock from '../AnimationComponent/Dock.jsx';
 
+ 
 
 function Main() {
   return (
   <><section className="hero-section">
+
+
+
   <AnimatedContent
     distance={100}
     direction="vertical"
