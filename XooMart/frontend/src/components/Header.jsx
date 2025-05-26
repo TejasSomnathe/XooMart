@@ -3,7 +3,7 @@ import BeandLogo from '../assets/BeandLogo.png'
 import "./header.css"
 import Dock from '../AnimationComponent/Dock.jsx';
 import { NavLink } from 'react-router-dom';
-import { Login } from './Login/Login.jsx';
+ 
 
 
 const items = [
