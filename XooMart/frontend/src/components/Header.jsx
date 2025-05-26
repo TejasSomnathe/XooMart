@@ -2,6 +2,9 @@ import React from 'react'
 import BeandLogo from '../assets/BeandLogo.png'
 import "./header.css"
 import Dock from '../AnimationComponent/Dock.jsx';
+import { NavLink } from 'react-router-dom';
+import { Login } from './Login/Login.jsx';
+
 
 const items = [
     { icon: "", label: 'Home', onClick: () => alert('Home!') },
@@ -20,9 +23,9 @@ function Header() {
         
         <div className="header-mid">
             <div className='header-mid-left'>
-              <button>Home</button>
-              <button>Product</button>
-              <button>Store</button>
+              <NavLink className="navlink" to="/"><button>Home</button></NavLink>
+              <NavLink className="navlink" to="/product"><button>Product</button></NavLink>
+              <NavLink className="navlink" to="/store"><button>Store</button></NavLink>
             </div>
 
 
@@ -34,8 +37,8 @@ function Header() {
         </div>
         
         <div className="header-right">
-          <button>🛒</button>
-          <button>Login</button>
+         <NavLink className="navlink" to="/cart"> <button>🛒</button></NavLink>
+          <NavLink className="navlink" to="/login"><button>Login</button></NavLink>
         </div>
     </div>
     <div className="dock">

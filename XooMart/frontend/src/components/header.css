@@ -112,3 +112,7 @@
     font-size: 0.8rem;
   }
 }
+
+.navlink {
+  text-decoration: none;
+}
