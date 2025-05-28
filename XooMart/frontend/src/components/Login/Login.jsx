@@ -31,24 +31,28 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            <label htmlFor="password" className="block text-xs font-semibold text-gray-900 mb-1">
+              <i className="fas fa-lock mr-1"></i>Password
+            </label>
             <input
-              id="mobile"
-              type="text"
-              placeholder="Password"
+              id="password"
+              type="password"
+              placeholder="Enter your Password"
               className="w-full border border-gray-300 rounded-md px-3 py-2 mb-6 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3b6ef8]"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
             <button
               type="submit"
               className="w-full bg-[#3b6ef8] text-white py-3 rounded-md font-normal text-sm hover:bg-[#345edb] transition-colors"
               onClick={async (e) => {
                 e.preventDefault();
                 try {
-                  const response = await axios.post("/api/v1/users/login", { email, password });
+                const response =  await axios.post("http://localhost:8000/api/v1/users/login", { email, password }, { withCredentials: true });
+
                   if (response.data) {
-                    alert("Login successful!");
-                    // Redirect or perform further actions
+                    alert("Login successful!");                    // Redirect or perform further actions
                   } else {
                     alert("Login failed: " + response.data.message);
                   }
