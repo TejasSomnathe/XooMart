@@ -7,7 +7,7 @@ import Layout from "./Layout.jsx";
 import Home from "./Home.jsx";
 import Product from "../src/components/Product/Product.jsx";
 import Stores from "../src/components/Stores/Stores.jsx";
- 
+ import Register from "../src/components/Register/Register.jsx";
 import Cart from "../src/components/Cart/Cart.jsx";
 import Login from "./components/Login/Login.jsx";
  
@@ -32,11 +32,11 @@ const router = createBrowserRouter([
       {
         path: "login",
         element:<Login />
+      },
+      {
+        path: "register", 
+        element:<Register />
       }
-      // {
-      //   path: "register", 
-      //   element:<Register />
-      // }
     ],
   },
 ]);
