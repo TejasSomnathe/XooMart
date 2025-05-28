@@ -1,18 +1,38 @@
 import { Cart } from "../models/cart.model";
 import { asyncHandler } from "../utils/asyncHandler";
 
-const getCartByUserId = asyncHandler(async (req, res) => {
-  const userId = req.user._id;
+ 
 
-  const cart = await Cart.findOne({ userId }).populate("products.productId", "name price image");
+const addProductToCart = asyncHandler(async (req, res) => {
+  const productId = req.params.productId;
+  const userId = req.user._id;
+  const quantity = req.body.quantity || 1;
+
+  let cart = await Cart.findOne({ userId });
 
   if (!cart) {
-    return res.status(404).json({ message: "Cart not found" });
+   
+    cart = new Cart({
+      userId,
+      products: [{ productId, quantity }]
+    });
+  } else {
+  
+    const productIndex = cart.products.findIndex(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (productIndex > -1) {
+       
+      cart.products[productIndex].quantity += quantity;
+    } else {
+      
+      cart.products.push({ productId, quantity });
+    }
   }
 
-  return res
-    .status(201)
-    .json(new ApiResponse(200, cart, "User register succesfully"));
+  await cart.save();
+  res.status(200).json({ message: "Product added to cart", cart });
 });
 
-export {getCartByUserId,}
+export { getCartByUserId, addProductToCart };

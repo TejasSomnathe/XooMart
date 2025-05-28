@@ -4,7 +4,7 @@ import { asyncHandler } from "../utils/asyncHandler";
 
 const viewShopDetailes = asyncHandler(async (req, res) => {
     try {
-        const shopId = req.params.id;
+        const shopId = req.params._id;
         // Assuming you have a function to get shop details by ID
         const shopDetails = await getShopDetailsById(shopId);
         
