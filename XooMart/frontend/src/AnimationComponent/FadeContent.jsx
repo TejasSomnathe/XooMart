@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import React from 'react';
 
 const FadeContent = ({
   children,

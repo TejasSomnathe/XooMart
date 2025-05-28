@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
+import React from "react";
 
 const AnimatedContent = ({
   children,
