@@ -49,10 +49,10 @@ function Login() {
               onClick={async (e) => {
                 e.preventDefault();
                 try {
-                const response =  await axios.post("http://localhost:8000/api/v1/users/login", { email, password }, { withCredentials: true });
-
+                const response =  await axios.post("/api/v1/users/login", { email, password }, { withCredentials: true });
+                  console.log("Login response:", response.data);
                   if (response.data) {
-                    alert("Login successful!");                    // Redirect or perform further actions
+                    alert("Login successful!");                     
                   } else {
                     alert("Login failed: " + response.data.message);
                   }

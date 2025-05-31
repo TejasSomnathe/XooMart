@@ -14,7 +14,7 @@ import Login from "./components/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/api/v1/users",
     element: <Layout />,
     children: [
       {
