@@ -1,7 +1,20 @@
 import React from 'react';
 import './Product.css';
+import axios from 'axios';
 
 function Product(){
+
+  // Fetch products from the API
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('/api/v1/users/product');
+      return response.data.products;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return [];
+    }
+  }
+
   return (<>
   <section className="container" aria-label="Products section">
     <header>

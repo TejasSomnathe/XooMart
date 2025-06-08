@@ -17,6 +17,7 @@ router.route("/register").post(
 );
 
 router.route("/login").post(Login);
+
 router.route("/logout").post(verifyJWT, Logout);
 
 export { router };

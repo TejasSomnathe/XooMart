@@ -23,9 +23,9 @@ function Header() {
         
         <div className="header-mid">
             <div className='header-mid-left'>
-              <NavLink className="navlink" to="/"><button>Home</button></NavLink>
-              <NavLink className="navlink" to="/product"><button>Product</button></NavLink>
-              <NavLink className="navlink" to="/store"><button>Store</button></NavLink>
+              <NavLink className="navlink" to="/api/v1/users/"><button>Home</button></NavLink>
+              <NavLink className="navlink" to="/api/v1/users/product"><button>Product</button></NavLink>
+              <NavLink className="navlink" to="/api/v1/users/store"><button>Store</button></NavLink>
             </div>
 
 
@@ -37,8 +37,8 @@ function Header() {
         </div>
         
         <div className="header-right">
-         <NavLink className="navlink" to="/cart"> <button>🛒</button></NavLink>
-          <NavLink className="navlink" to="/login"><button>Login</button></NavLink>
+         <NavLink className="navlink" to="/api/v1/users/cart"> <button>🛒</button></NavLink>
+          <NavLink className="navlink" to="/api/v1/users/login"><button>Login</button></NavLink>
         </div>
     </div>
     <div className="dock">
