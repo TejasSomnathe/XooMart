@@ -16,7 +16,7 @@ router.route("/register").post(
   userRegister
 );
 
-router.route("/login").post(Login);
+router.route("/api/v1/users/login").post(Login);
 
 router.route("/logout").post(verifyJWT, Logout);
 
