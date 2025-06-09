@@ -1,47 +1,110 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can add your login logic
+    console.log('Email:', email);
+    console.log('Password:', password);
+  };
 
   return (
-    <div className="login-bg">
-      <div className="login-card">
-        <div className="login-icon">
-          <i className="fas fa-sign-in-alt" style={{ color: "#3b6ef8", fontSize: "2rem" }}></i>
-        </div>
-        <h1 className="login-title">Welcome Back!</h1>
-        <p className="login-subtitle">Login to manage your store and products.</p>
-        <form>
-          <label htmlFor="email" className="login-label">
-            <i className="fas fa-mobile-alt" style={{ marginRight: "0.5rem" }}></i>Email
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #8e2de2, #4a00e0)',
+        padding: '20px',
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          background: 'white',
+          borderRadius: '16px',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+          padding: '40px',
+          width: '100%',
+          maxWidth: '400px',
+        }}
+      >
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#4a00e0' }}>
+          Login
+        </h2>
+
+        <div style={{ marginBottom: '16px' }}>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+            Email
           </label>
           <input
-            id="email"
-            type="text"
-            placeholder="Enter your Email"
-            className="login-input"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+            style={{
+              width: '100%',
+              padding: '12px',
+              borderRadius: '8px',
+              border: '1px solid #ccc',
+              outline: 'none',
+              transition: 'border-color 0.3s',
+            }}
+            onFocus={(e) => (e.target.style.borderColor = '#8e2de2')}
+            onBlur={(e) => (e.target.style.borderColor = '#ccc')}
           />
-          <label htmlFor="password" className="login-label">
-            <i className="fas fa-lock" style={{ marginRight: "0.5rem" }}></i>Password
+        </div>
+
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+            Password
           </label>
           <input
-            id="password"
             type="password"
-            placeholder="Enter your Password"
-            className="login-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+            style={{
+              width: '100%',
+              padding: '12px',
+              borderRadius: '8px',
+              border: '1px solid #ccc',
+              outline: 'none',
+              transition: 'border-color 0.3s',
+            }}
+            onFocus={(e) => (e.target.style.borderColor = '#8e2de2')}
+            onBlur={(e) => (e.target.style.borderColor = '#ccc')}
           />
-          <button
-            type="submit"
-            className="login-btn"
-            onClick={async (e) => {
+        </div>
+
+        <button
+          type="submit"
+          style={{
+            width: '100%',
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            background: 'linear-gradient(135deg, #8e2de2, #4a00e0)',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'opacity 0.3s',
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = '0.9')}
+          onMouseOut={(e) => (e.target.style.opacity = '1')}
+           onClick={async (e) => {
               e.preventDefault();
               try {
                 const response = await axios.post("/api/v1/users/login", { email, password }, { withCredentials: true });
@@ -54,17 +117,29 @@ function Login() {
                 console.error("Login error:", error);
               }
             }}
+        >
+          Login
+        </button>
+
+        {/* Register link */}
+        <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px' }}>
+          Don’t have an account?{' '}
+          <Link
+            to="/api/v1/users/register"
+            style={{
+              color: '#8e2de2',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+            }}
           >
-            Submit
-          </button>
-        </form>
-        <p className="login-footer">
-          Don't have an account?
-          <NavLink to="/register" className="login-link"> Sign up</NavLink>
+            Register
+          </Link>
         </p>
-      </div>
+      </form>
     </div>
   );
 }
 
 export default Login;
+
+

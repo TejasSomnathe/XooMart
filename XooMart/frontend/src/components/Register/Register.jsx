@@ -1,40 +1,181 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+// src/components/RegisterPage.jsx
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Register() {
+function RegisterPage() {
+  const [formData, setFormData] = useState({
+    username: '',
+    shopname: '',
+    email: '',
+    fullname: '',
+    password: '',
+  });
+
+  const [shopImage, setShopImage] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleImageChange = (e) => {
+    setShopImage(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = new FormData();
+      data.append('username', formData.username);
+      data.append('shopname', formData.shopname);
+      data.append('email', formData.email);
+      data.append('fullname', formData.fullname);
+      data.append('password', formData.password);
+      if (shopImage) {
+        data.append('shopImage', shopImage);
+      }
+
+      const response = await axios.post(
+        '/api/v1/users/register',
+        data,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      if (response.data) {
+        alert('Register successful!');
+      } else {
+        alert('Register failed: ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Register error:', error);
+      alert('An error occurred during registration.');
+    }
+  };
+
   return (
-   <>
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#1db06a] to-[#0e8f7a] p-4">
-    <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
-      <div className="flex justify-center mb-4">
-        <i className="fas fa-user-plus text-[#1db06a] text-4xl"></i>
-      </div>
-      <h1 className="text-center text-gray-900 font-extrabold text-2xl mb-1">Create Your Account</h1>
-      <p className="text-center text-gray-600 mb-6 text-sm">Join us and start selling your products locally.</p>
-      <form>
-        <label for="mobile" className="flex items-center text-gray-900 font-semibold mb-1 text-sm">
-          <i className="fas fa-mobile-alt mr-1"></i> Mobile Number
-        </label>
-        <input
-          id="mobile"
-          type="text"
-          placeholder="Enter your 10-digit mobile number"
-          className="w-full border border-gray-300 rounded-md px-4 py-2 mb-6 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1db06a]"
-        />
+    <div
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #11998e, #38ef7d)',
+        padding: '20px',
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          background: 'white',
+          borderRadius: '16px',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+          padding: '40px',
+          width: '100%',
+          maxWidth: '450px',
+        }}
+        encType="multipart/form-data"
+      >
+        <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#11998e' }}>
+          Register
+        </h2>
+
+        {/* Text Inputs */}
+        {[
+          { label: 'Username', name: 'username', type: 'text' },
+          { label: 'Shop Name', name: 'shopname', type: 'text' },
+          { label: 'Email', name: 'email', type: 'email' },
+          { label: 'Full Name', name: 'fullname', type: 'text' },
+          { label: 'Password', name: 'password', type: 'password' },
+        ].map((input) => (
+          <div key={input.name} style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+              {input.label}
+            </label>
+            <input
+              type={input.type}
+              name={input.name}
+              value={formData[input.name]}
+              onChange={handleChange}
+              placeholder={`Enter your ${input.label.toLowerCase()}`}
+              required
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '8px',
+                border: '1px solid #ccc',
+                outline: 'none',
+                transition: 'border-color 0.3s',
+              }}
+              onFocus={(e) => (e.target.style.borderColor = '#11998e')}
+              onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+            />
+          </div>
+        ))}
+
+        {/* Shop Image Upload */}
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+            Shop Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            style={{
+              width: '100%',
+              padding: '8px',
+              borderRadius: '8px',
+              border: '1px solid #ccc',
+              outline: 'none',
+              background: 'white',
+            }}
+          />
+        </div>
+
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-[#2563eb] hover:bg-[#1e40af] text-white font-normal py-3 rounded-md transition-colors duration-300"
+          style={{
+            width: '100%',
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            background: 'linear-gradient(135deg, #11998e, #38ef7d)',
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'opacity 0.3s',
+          }}
+          onMouseOver={(e) => (e.target.style.opacity = '0.9')}
+          onMouseOut={(e) => (e.target.style.opacity = '1')}
         >
-          Send OTP
+          Register
         </button>
+
+        {/* Back to Login link */}
+        <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px' }}>
+          Already have an account?{' '}
+          <Link
+            to="/"
+            style={{
+              color: '#11998e',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+            }}
+          >
+            Login
+          </Link>
+        </p>
       </form>
-      <p className="text-center text-gray-600 mt-6 text-sm">
-        Already have an account?
-        <NavLink to="/login" className="text-[#1db06a] font-semibold hover:underline">Log in</NavLink> 
-      </p>
     </div>
-  </div></>
-  )
+  );
 }
 
-export default Register
+export default RegisterPage;
