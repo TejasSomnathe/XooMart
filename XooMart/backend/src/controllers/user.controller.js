@@ -113,8 +113,6 @@ const Login = asyncHandler(async (req, res) => {
         200,
         {
           user: loggedInUser,
-          accessToken,
-          refreshToken,
         },
         "User login successfully"
       )
@@ -235,7 +233,6 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, user, "Account details update succesfully"));
 });
-
 
 export {
   userRegister,

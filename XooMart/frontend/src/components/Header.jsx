@@ -17,13 +17,13 @@ function Header() {
   return (
     <>
     <div className='header'>
-        <div className="header-left">
+        <div className="header-left" >
           XooMart
         </div>
         
         <div className="header-mid">
             <div className='header-mid-left'>
-              <NavLink className="navlink" to="/api/v1/users/"><button>Home</button></NavLink>
+              <NavLink className="navlink" to=""><button>Home</button></NavLink>
               <NavLink className="navlink" to="/api/v1/users/products"><button>Product</button></NavLink>
               <NavLink className="navlink" to="/api/v1/users/store"><button>Store</button></NavLink>
             </div>

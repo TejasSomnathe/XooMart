@@ -3,6 +3,7 @@ import "./main.css"
 import AnimatedContent from '../AnimationComponent/AnimatedContent'
 import FadeContent from '../AnimationComponent/FadeContent'
  import Dock from '../AnimationComponent/Dock.jsx';
+import { NavLink } from 'react-router-dom';
 
  
 
@@ -42,10 +43,10 @@ function Main() {
     threshold={0.1}
   >
     <div className="hero-buttons">
-      <button className="browse-btn" type="button">
+      <NavLink to="/api/v1/users/products"><button className="browse-btn" type="button">
         🛍️
         Browse Products
-      </button>
+      </button></NavLink>
       <button className="browse-btn" type="button">
         🏪
         Create Store
