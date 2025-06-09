@@ -1,6 +1,8 @@
-import { Product } from "../models/product.model";
-import { asyncHandler } from "../utils/asyncHandler";
+import { Product } from "../models/product.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { ApiError } from "../utils/ApiErrors.js";
 
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, price, category, stockQuantity } = req.body;
@@ -8,9 +10,14 @@ const addProduct = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  const imageUrl = req.file ? req.file.path : null;
+  let shopImageLocalPath = "";
+  if (req.files && req.files.imageUrl && req.files.imageUrl.length > 0) {
+    shopImageLocalPath = req.files.imageUrl[0].path;
+  } else {
+    return res.status(400).json({ message: "Shop image is required" });
+  }
 
-  const cloudinaryUrl = await uploadOnCloudinary(imageUrl);
+  const cloudinaryUrl = await uploadOnCloudinary(shopImageLocalPath);
   if (!cloudinaryUrl) {
     return res.status(500).json({ message: "Failed to upload product image" });
   }
@@ -21,7 +28,7 @@ const addProduct = asyncHandler(async (req, res) => {
     price,
     category,
     stockQuantity: stockQuantity || 0,
-    imageUrl: cloudinaryUrl,
+    imageUrl: cloudinaryUrl.url,
   });
 
   if (!product) {
@@ -33,7 +40,7 @@ const addProduct = asyncHandler(async (req, res) => {
 
   return res
     .status(201)
-    .json(new ApiResponse(200, product, "User register succesfully"));
+    .json(new ApiResponse(200, product, "Product add succesfully"));
 });
 
 const getProductById = asyncHandler(async (req, res) => {
@@ -65,4 +72,11 @@ const viewProduct = asyncHandler(async (req, res) => {
   });
 });
 
-export { getProductById, viewProduct, addProduct };
+const viewProducts = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    message: "Products fetched successfully",
+    products: await Product.find({}),
+  });
+});
+
+export { getProductById, viewProduct, addProduct, viewProducts };

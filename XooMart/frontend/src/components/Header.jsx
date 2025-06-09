@@ -24,7 +24,7 @@ function Header() {
         <div className="header-mid">
             <div className='header-mid-left'>
               <NavLink className="navlink" to="/api/v1/users/"><button>Home</button></NavLink>
-              <NavLink className="navlink" to="/api/v1/users/product"><button>Product</button></NavLink>
+              <NavLink className="navlink" to="/api/v1/users/products"><button>Product</button></NavLink>
               <NavLink className="navlink" to="/api/v1/users/store"><button>Store</button></NavLink>
             </div>
 

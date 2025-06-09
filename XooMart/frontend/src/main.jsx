@@ -14,14 +14,14 @@ import Login from "./components/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/api/v1/users",
+    path: "",
     element: <Layout />,
     children: [
       {
         path: "",
         element: <Home />,
       },
-      { path: "product", element: <Product /> },
+      { path: "api/v1/users/products", element: <Product /> },
       { path: "store", element: <Stores /> },
       
       {
