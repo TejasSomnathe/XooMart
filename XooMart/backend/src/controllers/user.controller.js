@@ -81,7 +81,7 @@ const Login = asyncHandler(async (req, res) => {
   }
 
   const userFind = await User.findOne({ email });
-  console.log("User found:", userFind); // Debugging
+  // console.log("User found:", userFind); // Debugging
   if (!userFind) {
     return res.status(404).json({ message: "User not found" });
   }

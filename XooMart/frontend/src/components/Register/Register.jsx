@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function RegisterPage() {
+function Register() {
   const [formData, setFormData] = useState({
     username: '',
     shopname: '',
@@ -163,7 +163,7 @@ function RegisterPage() {
         <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px' }}>
           Already have an account?{' '}
           <Link
-            to="/"
+            to="/api/v1/users/login"
             style={{
               color: '#11998e',
               textDecoration: 'none',
@@ -178,4 +178,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default Register;

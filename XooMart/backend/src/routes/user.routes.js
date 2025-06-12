@@ -21,6 +21,10 @@ router.route("/login").post(Login);
 
 router.route("/logout").post(verifyJWT, Logout);
 
+router.route("/profile").get(verifyJWT, (req, res) => {
+  res.status(200).json({ user: req.user });
+});
+
 router.route("/addProduct").post(
   upload.fields([
     {

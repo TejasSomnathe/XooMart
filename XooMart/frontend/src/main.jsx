@@ -10,7 +10,8 @@ import Stores from "../src/components/Stores/Stores.jsx";
  import Register from "../src/components/Register/Register.jsx";
 import Cart from "../src/components/Cart/Cart.jsx";
 import Login from "./components/Login/Login.jsx";
- 
+import { UserProvider } from "./context/UserContext.jsx";
+ import Profile from "./components/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "api/v1/users/register", 
         element:<Register />
+      },
+      {
+        path: "api/v1/users/profile",
+        element:<Profile />
       }
     ],
   },
@@ -43,6 +48,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <UserProvider>
     <RouterProvider router={router} />
+    </UserProvider>
   </StrictMode>
 );

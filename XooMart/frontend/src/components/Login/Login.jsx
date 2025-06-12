@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { NavLink,useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
+import { useUserContext } from '../../context/UserContext.jsx'; 
+
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+   const { user,setUser,setIsLoggedIn } = useUserContext();
   
+   useEffect(() => {
+  if (user) {
+    console.log("User data updated:", user);
+  }
+}, [user]);
+
+const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +26,7 @@ function Login() {
     console.log('Password:', password);
   };
 
-  return (
+  return ( 
     <div
       style={{
         minHeight: '100vh',
@@ -109,7 +119,11 @@ function Login() {
               try {
                 const response = await axios.post("/api/v1/users/login", { email, password }, { withCredentials: true });
                 if (response.data) {
+                  setIsLoggedIn(true);
+                  setUser(response.data);
                   alert("Login successful!");
+                  // console.log("User data:", user);
+                 navigate("/");
                 } else {
                   alert("Login failed: " + response.data.message);
                 }
