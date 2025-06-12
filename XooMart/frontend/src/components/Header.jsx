@@ -19,7 +19,7 @@ function Header() {
   const {  setUser, isLoggedIn, setIsLoggedIn } = useUserContext();
 
   const handleLogout = async (e) => {
-    e.preventDefault(); // Prevent NavLink default navigation
+    e.preventDefault();
     try {
       await axios.post("/api/v1/users/logout", {}, { withCredentials: true });
       setUser(null);
@@ -32,10 +32,11 @@ function Header() {
   return (
     <>
     <div className='header'>
+    
         <div className="header-left" >
           XooMart
         </div>
-        
+      
         <div className="header-mid">
             <div className='header-mid-left'>
               <NavLink className="navlink" to=""><button>Home</button></NavLink>
