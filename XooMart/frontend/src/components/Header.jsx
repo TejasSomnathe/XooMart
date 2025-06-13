@@ -3,8 +3,9 @@ import BeandLogo from '../assets/BeandLogo.png'
 import "./header.css"
 import Dock from '../AnimationComponent/Dock.jsx';
 import { NavLink } from 'react-router-dom';
-import { useUserContext } from '../context/UserContext.jsx';
+import { useContext } from 'react';
 import axios from 'axios';
+import UserContext from '../context/UserContext.js';
  
 
 
@@ -16,14 +17,14 @@ const items = [
   ];
 
 function Header() {
-  const {  setUser, isLoggedIn, setIsLoggedIn } = useUserContext();
+  const {  setUser, loggedIn, setLoggedIn } =  useContext(UserContext);
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
       await axios.post("/api/v1/users/logout", {}, { withCredentials: true });
       setUser(null);
-      setIsLoggedIn(false);
+      setLoggedIn(false);
       // Optionally, show a message
     } catch (error) {
       console.error("Logout error:", error);
@@ -55,7 +56,7 @@ function Header() {
         <div className="header-right">
           
          <NavLink className="navlink" to="/api/v1/users/cart"> <button>🛒</button></NavLink>
-            {isLoggedIn ? (
+            {loggedIn ? (
        <>
            <NavLink className="navlink" to="/api/v1/users/profile">
           <button>👤</button>

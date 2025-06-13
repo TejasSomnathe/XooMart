@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { Login, userRegister, Logout } from "../controllers/user.controller.js";
+import {
+  Login,
+  userRegister,
+  Logout,
+  getCurrentUser,
+} from "../controllers/user.controller.js";
 
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -21,9 +26,7 @@ router.route("/login").post(Login);
 
 router.route("/logout").post(verifyJWT, Logout);
 
-router.route("/profile").get(verifyJWT, (req, res) => {
-  res.status(200).json({ user: req.user });
-});
+router.route("/profile").get(verifyJWT, getCurrentUser);
 
 router.route("/addProduct").post(
   upload.fields([

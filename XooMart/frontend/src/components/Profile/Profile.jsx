@@ -1,10 +1,13 @@
 import React from "react";
-import { useUserContext } from "../../context/UserContext";
+import UserContext from "../../context/UserContext.js";
+import { useContext } from "react";
 import "./profile.css"; 
 
-const UserProfile = () => {
-  const { user } = useUserContext();
 
+
+const UserProfile = () => {
+  const { user } = useContext(UserContext);
+  console.log(user);
   if (!user) {
     return <div className="no-user">User not logged in.</div>;
   }

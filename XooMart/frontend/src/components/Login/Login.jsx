@@ -1,15 +1,15 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import { NavLink,useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
-import { useUserContext } from '../../context/UserContext.jsx'; 
+import UserContext from '../../context/UserContext';
 
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-   const { user,setUser,setIsLoggedIn } = useUserContext();
+   const { user,setUser, setLoggedIn } =  useContext(UserContext);
   
    useEffect(() => {
   if (user) {
@@ -21,7 +21,7 @@ const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can add your login logic
+    
     console.log('Email:', email);
     console.log('Password:', password);
   };
@@ -118,14 +118,13 @@ const navigate = useNavigate();
               e.preventDefault();
               try {
                 const response = await axios.post("/api/v1/users/login", { email, password }, { withCredentials: true });
-                if (response.data) {
-                  setIsLoggedIn(true);
-                  setUser(response.data);
+                if (response.data && response.data.data && response.data.data.user) {
+                  setLoggedIn(true);
+                  setUser(response.data.data.user); 
                   alert("Login successful!");
-                  // console.log("User data:", user);
-                 navigate("/");
+                  navigate("/");
                 } else {
-                  alert("Login failed: " + response.data.message);
+                  alert("Login failed: " + (response.data.message || "Unknown error"));
                 }
               } catch (error) {
                 console.error("Login error:", error);
