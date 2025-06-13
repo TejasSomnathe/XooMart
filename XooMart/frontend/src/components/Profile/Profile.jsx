@@ -7,7 +7,7 @@ import "./profile.css";
 
 const UserProfile = () => {
   const { user } = useContext(UserContext);
-  console.log(user);
+ 
   if (!user) {
     return <div className="no-user">User not logged in.</div>;
   }

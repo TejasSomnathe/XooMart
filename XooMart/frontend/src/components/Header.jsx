@@ -2,7 +2,7 @@ import React from 'react'
 import BeandLogo from '../assets/BeandLogo.png'
 import "./header.css"
 import Dock from '../AnimationComponent/Dock.jsx';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import axios from 'axios';
 import UserContext from '../context/UserContext.js';
@@ -18,6 +18,7 @@ const items = [
 
 function Header() {
   const {  setUser, loggedIn, setLoggedIn } =  useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -25,7 +26,8 @@ function Header() {
       await axios.post("/api/v1/users/logout", {}, { withCredentials: true });
       setUser(null);
       setLoggedIn(false);
-      // Optionally, show a message
+      navigate("/");
+      
     } catch (error) {
       console.error("Logout error:", error);
     }

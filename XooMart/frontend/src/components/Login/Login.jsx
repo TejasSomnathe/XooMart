@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useContext } from 'react';
+import React, { useState,useContext } from 'react';
 import { NavLink,useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -9,13 +9,9 @@ import UserContext from '../../context/UserContext';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-   const { user,setUser, setLoggedIn } =  useContext(UserContext);
+   const { setUser, setLoggedIn } =  useContext(UserContext);
   
-   useEffect(() => {
-  if (user) {
-    console.log("User data updated:", user);
-  }
-}, [user]);
+   
 
 const navigate = useNavigate();
 
