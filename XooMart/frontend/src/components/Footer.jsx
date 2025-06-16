@@ -29,9 +29,9 @@ function Footer() {
       <div className="footer-section footer-links">
         <h3>Quick Links</h3>
         <NavLink to="">Home</NavLink>
-        <NavLink to="/api/v1/users/products">Products</NavLink>
-        <NavLink to="/api/v1/users/store">Stores</NavLink>
-        {loggedIn? (<NavLink to="/api/v1/users/cart">Cart</NavLink>):("")}
+        <NavLink to="/products">Products</NavLink>
+        <NavLink to="/store">Stores</NavLink>
+        {loggedIn? (<NavLink to="/cart">Cart</NavLink>):("")}
       </div>
 
       <div className="footer-section footer-links">

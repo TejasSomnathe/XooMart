@@ -73,10 +73,12 @@ const viewProduct = asyncHandler(async (req, res) => {
 });
 
 const viewProducts = asyncHandler(async (req, res) => {
-  res.status(200).json({
-    message: "Products fetched successfully",
-    products: await Product.find({}),
+  const search = req.query.search || "";
+  // Assuming you use MongoDB/Mongoose:
+  const products = await Product.find({
+    name: { $regex: search, $options: "i" }, // case-insensitive search
   });
+  res.json({ products });
 });
 
 export { getProductById, viewProduct, addProduct, viewProducts };

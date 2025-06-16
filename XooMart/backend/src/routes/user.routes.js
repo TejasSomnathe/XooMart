@@ -37,6 +37,6 @@ router.route("/addProduct").post(
   ]),
   addProduct
 );
-router.route("/product").get(viewProducts);
+router.route("/products").get(viewProducts);
 
 export { router };

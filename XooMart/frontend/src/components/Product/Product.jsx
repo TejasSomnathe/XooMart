@@ -9,9 +9,22 @@ import  { useEffect, useState } from 'react';
 function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [inputValue, setInputValue] = useState('');
+
+    const handleSearch = async () => {
+    try {
+       
+      const response = await axios.get(`/api/v1/users/products?search=${inputValue}`);
+      setProducts(response.data.products);
+      console.log("Search results:", response.data);
+       
+    } catch (error) {
+      console.error("Search error:", error);
+    }
+  }
 
   useEffect(() => {
-    axios.get('/api/v1/users/product')
+    axios.get('/api/v1/users/products')
       .then(response => {
         setProducts(response.data.products);
         setLoading(false);
@@ -20,7 +33,8 @@ function Product() {
         console.error('Error fetching products:', error);
         setLoading(false);
       });
-  }, []);
+  }, [inputValue]);
+ 
 
   if (loading) return <div>Loading...</div>;
 
@@ -37,22 +51,25 @@ function Product() {
         id="search"
         name="search"
         placeholder="Search products..."
-        autocomplete="off"
+        autocomplete="on"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
       <button type="button" className="filters-btn" aria-label="Filters">
         <i className="fas fa-filter" aria-hidden="true"></i>
         <span>Filters</span>
       </button>
-      <button type="submit" className="search-btn" aria-label="Search">
+      <button type="submit" className="search-btn" aria-label="Search" onClick={handleSearch}>
         <i className="fas fa-search" aria-hidden="true"></i>
         <span>Search</span>
       </button>
     </form>
-    <p className="products-found">8 products found</p>
+    <p className="products-found">{products.length} products found</p>
     <ul className="products-list" aria-label="Product list">
-      <li className="product-card">
+      {products.map(product => (
+        <li className="product-card">
         <img
-          src={products[0]?.imageUrl}
+          src={product.imageUrl}
           alt="Smartphone X front view showing apps on screen"
           loading="lazy"
           width="400"
@@ -60,14 +77,14 @@ function Product() {
         />
         <div className="content">
           <div className="header">
-            <h2>{products[0]?.name}</h2>
-            <span className="price">${products[0]?.price}</span>
+            <h2>{product.name}</h2>
+            <span className="price">${product.price}</span>
           </div>
           <p className="description">
-           {products[0]?.description }
+           {product.description }
           </p>
           <p className="store-info">
-            <i className="fas fa-store" aria-hidden="true"></i> Only {products[0]?.stockQuantity} available
+            <i className="fas fa-store" aria-hidden="true"></i> Only {product.stockQuantity} available
           </p>
           <div className="actions">
             <a href="#" className="details-link">View Details</a>
@@ -77,82 +94,8 @@ function Product() {
           </div>
         </div>
       </li>
-      <li className="product-card">
-        <img
-          src="https://storage.googleapis.com/a1aa/image/f96dbc1f-9349-4df4-93d7-441f7b935580.jpg"
-          alt="Wireless headphones on yellow background"
-          loading="lazy"
-          width="400"
-          height="280"
-        />
-        <div className="content">
-          <div className="header">
-            <h2>Wireless Headphones</h2>
-            <span className="price">$249.99</span>
-          </div>
-          <p className="description">
-            Premium noise-cancelling wireless headphones with long battery life.
-          </p>
-          <p className="store-info">
-            <i className="fas fa-store" aria-hidden="true"></i> Available at 3 stores
-          </p>
-          <div className="actions">
-            <a href="#" className="details-link">View Details</a>
-            <button type="button" className="add-cart-btn">
-              <i className="fas fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </li>  <li className="product-card">
-        <img
-          src="https://storage.googleapis.com/a1aa/image/3d0626fe-08b6-4cb6-04af-704e253e0622.jpg"
-          alt="Casual T-Shirt with blue cat print on beige fabric"
-          loading="lazy"
-          width="400"
-          height="280"
-        />
-        <div className="content">
-          <div className="header">
-            <h2>Casual T-Shirt</h2>
-            <span className="price">$24.99</span>
-          </div>
-          <p className="description">Comfortable cotton t-shirt for everyday wear.</p>
-          <p className="store-info">
-            <i className="fas fa-store" aria-hidden="true"></i> Available at 2 stores
-          </p>
-          <div className="actions">
-            <a href="#" className="details-link">View Details</a>
-            <button type="button" className="add-cart-btn">
-              <i className="fas fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </li>
-      <li className="product-card">
-        <img
-          src="https://storage.googleapis.com/a1aa/image/e97be71c-bcf3-4e06-a592-c38e704958b8.jpg"
-          alt="Hand holding red organic apple with leaf in orchard"
-          loading="lazy"
-          width="400"
-          height="280"
-        />
-        <div className="content">
-          <div className="header">
-            <h2>Organic Apples</h2>
-            <span className="price">$4.99</span>
-          </div>
-          <p className="description">Fresh organic apples from local farms.</p>
-          <p className="store-info">
-            <i className="fas fa-store" aria-hidden="true"></i> Available at 2 stores
-          </p>
-          <div className="actions">
-            <a href="#" className="details-link">View Details</a>
-            <button type="button" className="add-cart-btn">
-              <i className="fas fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-            </button>
-          </div>
-        </div>
-      </li>
+      ))}
+    
     </ul>
   </section>
 

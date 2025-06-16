@@ -43,8 +43,8 @@ function Header() {
         <div className="header-mid">
             <div className='header-mid-left'>
               <NavLink className="navlink" to=""><button>Home</button></NavLink>
-              <NavLink className="navlink" to="/api/v1/users/products"><button>Product</button></NavLink>
-              <NavLink className="navlink" to="/api/v1/users/store"><button>Store</button></NavLink>
+              <NavLink className="navlink" to="/products"><button>Product</button></NavLink>
+              <NavLink className="navlink" to="/store"><button>Store</button></NavLink>
             </div>
 
 
@@ -59,8 +59,8 @@ function Header() {
           
             {loggedIn ? (
               <>
-            <NavLink className="navlink" to="/api/v1/users/cart"> <button>🛒</button></NavLink>
-           <NavLink className="navlink" to="/api/v1/users/profile">
+            <NavLink className="navlink" to="/cart"> <button>🛒</button></NavLink>
+           <NavLink className="navlink" to="/profile">
           <button>👤</button>
         </NavLink>
         <NavLink className="navlink" to="/"
@@ -70,7 +70,7 @@ function Header() {
        </>
             
       ) : (
-        <NavLink className="navlink" to="/api/v1/users/login">
+        <NavLink className="navlink" to="/login">
           <button>Login</button>
         </NavLink>
       )}
