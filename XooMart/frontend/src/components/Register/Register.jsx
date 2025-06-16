@@ -163,7 +163,7 @@ function Register() {
         <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px' }}>
           Already have an account?{' '}
           <Link
-            to="/api/v1/users/login"
+            to="/login"
             style={{
               color: '#11998e',
               textDecoration: 'none',

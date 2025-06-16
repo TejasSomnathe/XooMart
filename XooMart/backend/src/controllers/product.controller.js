@@ -73,12 +73,16 @@ const viewProduct = asyncHandler(async (req, res) => {
 });
 
 const viewProducts = asyncHandler(async (req, res) => {
-  const search = req.query.search || "";
-  // Assuming you use MongoDB/Mongoose:
-  const products = await Product.find({
-    name: { $regex: search, $options: "i" }, // case-insensitive search
-  });
-  res.json({ products });
+  const products = await Product.find({});
+
+  if (req.query.search) {
+    const filteredProducts = products.filter((product) =>
+      product.name.includes(req.query.search)
+    );
+    return res.status(200).json(filteredProducts);
+  }
+
+  return res.status(200).json(products);
 });
 
 export { getProductById, viewProduct, addProduct, viewProducts };

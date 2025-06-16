@@ -134,7 +134,7 @@ const navigate = useNavigate();
         <p style={{ marginTop: '20px', textAlign: 'center', fontSize: '14px' }}>
           Don’t have an account?{' '}
           <Link
-            to="/api/v1/users/register"
+            to="/register"
             style={{
               color: '#8e2de2',
               textDecoration: 'none',

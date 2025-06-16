@@ -8,14 +8,13 @@ import  { useEffect, useState } from 'react';
 
 function Product() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [inputValue, setInputValue] = useState('');
 
     const handleSearch = async () => {
     try {
        
       const response = await axios.get(`/api/v1/users/products?search=${inputValue}`);
-      setProducts(response.data.products);
+      setProducts(response.data);
       console.log("Search results:", response.data);
        
     } catch (error) {
@@ -26,17 +25,19 @@ function Product() {
   useEffect(() => {
     axios.get('/api/v1/users/products')
       .then(response => {
-        setProducts(response.data.products);
-        setLoading(false);
+       
+        setProducts(response.data);
+        
+        
       })
       .catch(error => {
         console.error('Error fetching products:', error);
-        setLoading(false);
+   
       });
-  }, [inputValue]);
+  }, []);
  
 
-  if (loading) return <div>Loading...</div>;
+  
 
   return (<>
   <section className="container" aria-label="Products section">

@@ -43,7 +43,7 @@ function Main() {
     threshold={0.1}
   >
     <div className="hero-buttons">
-      <NavLink to="/api/v1/users/products"><button className="browse-btn" type="button">
+      <NavLink to="/products"><button className="browse-btn" type="button">
         🛍️
         Browse Products
       </button></NavLink>
