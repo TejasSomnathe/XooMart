@@ -2,10 +2,14 @@ import "./footer.css"
 // import instagram from "../assets/instagram.jpeg"
 // import facebook from "../assets/facebook.png"
 // import twitter from "../assets/twitter.png"
+import { NavLink } from "react-router-dom"
+import { useContext } from "react"
+import UserContext from "../context/UserContext.js"
 
 import React from 'react'
 
 function Footer() {
+  const { loggedIn } = useContext(UserContext);
   return (
     <>
       <footer>
@@ -16,27 +20,27 @@ function Footer() {
           Connecting you with local stores and products in your district. Find what you need, where you need it.
         </p>
         <div className="social-icons">
-          {/* <a href="#" aria-label="Facebook"> <img src={instagram} alt="" /></a>
-          <a href="#" aria-label="Twitter"> <img src={facebook} alt="" /></a>
-          <a href="#" aria-label="Instagram"><img src={twitter} alt="" /></a> */}
+          {/* <NavLink to="#" aria-label="Facebook"> <img src={instagram} alt="" /></NavLink>
+          <NavLink to="#" aria-label="Twitter"> <img src={facebook} alt="" /></NavLink>
+          <NavLink to="#" aria-label="Instagram"><img src={twitter} alt="" /></NavLink> */}
         </div>
       </div>
 
       <div className="footer-section footer-links">
         <h3>Quick Links</h3>
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Stores</a>
-        <a href="#">Cart</a>
+        <NavLink to="">Home</NavLink>
+        <NavLink to="/api/v1/users/products">Products</NavLink>
+        <NavLink to="/api/v1/users/store">Stores</NavLink>
+        {loggedIn? (<NavLink to="/api/v1/users/cart">Cart</NavLink>):("")}
       </div>
 
       <div className="footer-section footer-links">
         <h3>Categories</h3>
-        <a href="#">Electronics</a>
-        <a href="#">Clothing</a>
-        <a href="#">Groceries</a>
-        <a href="#">Home Goods</a>
-        <a href="#">Health &amp; Beauty</a>
+        <NavLink to="#">Electronics</NavLink>
+        <NavLink to="#">Clothing</NavLink>
+        <NavLink to="#">Groceries</NavLink>
+        <NavLink to="#">Home Goods</NavLink>
+        <NavLink to="#">Health &amp; Beauty</NavLink>
       </div>
 
       <div className="footer-section">

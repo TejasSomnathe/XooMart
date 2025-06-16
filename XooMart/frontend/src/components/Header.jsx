@@ -57,9 +57,9 @@ function Header() {
         
         <div className="header-right">
           
-         <NavLink className="navlink" to="/api/v1/users/cart"> <button>🛒</button></NavLink>
             {loggedIn ? (
-       <>
+              <>
+            <NavLink className="navlink" to="/api/v1/users/cart"> <button>🛒</button></NavLink>
            <NavLink className="navlink" to="/api/v1/users/profile">
           <button>👤</button>
         </NavLink>
