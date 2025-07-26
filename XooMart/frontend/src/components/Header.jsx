@@ -23,7 +23,7 @@ function Header() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/v1/users/logout", {}, { withCredentials: true });
+      await axios.post("https://xoomart.onrender.com/api/v1/users/login", {}, { withCredentials: true });
       setUser(null);
       setLoggedIn(false);
       navigate("/");
