@@ -37,7 +37,7 @@ function Register() {
       }
 
       const response = await axios.post(
-        '/api/v1/users/register',
+        'https://xoomart.onrender.com/api/v1/users/register',
         data,
         {
           withCredentials: true,

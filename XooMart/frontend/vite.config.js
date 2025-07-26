@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       // Proxy API requests starting with /api to your backend
-      "/api": "https://xoomart.onrender.com/api/v1/users/login",
+      "/api": "http://localhost:8000",
     },
   },
 });
