@@ -149,17 +149,17 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   try {
     const decodedToken = jwt.verify(
       incomingRefreshToken,
-      process.env.REFRESH_TOCKEN_SECRET
+      process.env.REFRESH_TOKEN_SECRET
     );
 
     const userFind = await User.findById(decodedToken?._id);
 
     if (!userFind) {
-      throw new ApiError(401, "invalid refresh tocken");
+      throw new ApiError(401, "invalid refresh TOKEN");
     }
 
     if (incomingRefreshToken !== userFind?.refreshToken) {
-      throw new ApiError(401, "Refresh tocken is expired or used");
+      throw new ApiError(401, "Refresh TOKEN is expired or used");
     }
 
     const options = {
@@ -178,11 +178,11 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         new ApiResponse(
           200,
           { accessToken, refreshToken: newrefreshToken },
-          "access tocken refreshed "
+          "access TOKEN refreshed "
         )
       );
   } catch (error) {
-    throw new ApiError(401, error?.message || "Invalid refresh tocken");
+    throw new ApiError(401, error?.message || "Invalid refresh TOKEN");
   }
 });
 
