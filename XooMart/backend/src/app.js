@@ -8,7 +8,7 @@ const allowedOrigins = ["https://xoo-mart.vercel.app"];
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: true,
     credentials: true,
   })
 );

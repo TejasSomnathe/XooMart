@@ -9,34 +9,36 @@ import {
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { addProduct, viewProducts } from "../controllers/product.controller.js";
+import {
+  addProductToCart,
+  getCart,
+  updateQuantity,
+  removeFromCart,
+  clearCart,
+} from "../controllers/cart.controller.js";
 
 const router = Router();
 
-router.route("/register").post(
-  upload.fields([
-    {
-      name: "shopImage",
-      maxCount: 1,
-    },
-  ]),
+router.post(
+  "/register",
+  upload.fields([{ name: "shopImage", maxCount: 1 }]),
   userRegister
 );
+router.post("/login", Login);
+router.post("/logout", verifyJWT, Logout);
+router.get("/profile", verifyJWT, getCurrentUser);
 
-router.route("/login").post(Login);
+router.get("/cart", verifyJWT, getCart);
+router.post("/cart/add/:productId", verifyJWT, addProductToCart);
+router.put("/cart/update/:productId", verifyJWT, updateQuantity);
+router.delete("/cart/remove/:productId", verifyJWT, removeFromCart);
+router.delete("/cart/clear", verifyJWT, clearCart);
 
-router.route("/logout").post(verifyJWT, Logout);
-
-router.route("/profile").get(verifyJWT, getCurrentUser);
-
-router.route("/addProduct").post(
-  upload.fields([
-    {
-      name: "imageUrl",
-      maxCount: 1,
-    },
-  ]),
+router.post(
+  "/addProduct",
+  upload.fields([{ name: "imageUrl", maxCount: 1 }]),
   addProduct
 );
-router.route("/products").get(viewProducts);
+router.get("/products", viewProducts);
 
 export { router };

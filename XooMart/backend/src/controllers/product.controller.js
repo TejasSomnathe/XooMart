@@ -73,14 +73,15 @@ const viewProduct = asyncHandler(async (req, res) => {
 });
 
 const viewProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const search = req.query.search;
 
-  if (req.query.search) {
-    const filteredProducts = products.filter((product) =>
-      product.name.includes(req.query.search)
-    );
-    return res.status(200).json(filteredProducts);
+  const query = {};
+
+  if (search) {
+    query.name = { $regex: search, $options: "i" }; // case-insensitive search
   }
+
+  const products = await Product.find(query);
 
   return res.status(200).json(products);
 });

@@ -113,7 +113,7 @@ const navigate = useNavigate();
            onClick={async (e) => {
               e.preventDefault();
               try {
-                const response = await axios.post("https://xoomart.onrender.com/api/v1/users/login", { email, password }, { withCredentials: true });
+                const response = await axios.post("/api/v1/users/login", { email, password }, { withCredentials: true });
                 if (response.data && response.data.data && response.data.data.user) {
                   setLoggedIn(true);
                   setUser(response.data.data.user); 
