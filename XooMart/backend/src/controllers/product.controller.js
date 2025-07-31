@@ -29,6 +29,7 @@ const addProduct = asyncHandler(async (req, res) => {
     category,
     stockQuantity: stockQuantity || 0,
     imageUrl: cloudinaryUrl.url,
+    createdBy: req.user._id,
   });
 
   if (!product) {
@@ -86,4 +87,22 @@ const viewProducts = asyncHandler(async (req, res) => {
   return res.status(200).json(products);
 });
 
-export { getProductById, viewProduct, addProduct, viewProducts };
+const getMyProducts = asyncHandler(async (req, res) => {
+  const userId = req.user?._id;
+
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized: User not found" });
+  }
+
+  const products = await Product.find({ createdBy: userId }).sort({
+    createdAt: -1,
+  });
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, products, "User's products fetched successfully")
+    );
+});
+
+export { getProductById, viewProduct, addProduct, viewProducts, getMyProducts };

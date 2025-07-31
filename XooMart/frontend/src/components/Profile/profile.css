@@ -68,3 +68,14 @@
   margin-top: 100px;
   color: gray;
 }
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.navlink {
+  text-decoration: none;
+}

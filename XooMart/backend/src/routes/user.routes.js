@@ -8,7 +8,11 @@ import {
 
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { addProduct, viewProducts } from "../controllers/product.controller.js";
+import {
+  addProduct,
+  viewProducts,
+  getMyProducts,
+} from "../controllers/product.controller.js";
 import {
   addProductToCart,
   getCart,
@@ -40,5 +44,7 @@ router.post(
   addProduct
 );
 router.get("/products", viewProducts);
+
+router.get("/myProduct", verifyJWT, getMyProducts);
 
 export { router };

@@ -12,6 +12,8 @@ import Cart from "../src/components/Cart/Cart.jsx";
 import Login from "./components/Login/Login.jsx";
 
  import Profile from "./components/Profile/Profile.jsx";
+import Addproducts from "./AddProducts/AddProducts.jsx";
+import Myproduct from "./MyProduct/Myproduct.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +43,15 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element:<Profile />
-      }
+      },
+      {
+        path: "addProduct",
+        element:<Addproducts />
+      },
+      {
+        path: "myProduct",
+        element:<Myproduct />
+      },
     ],
   },
 ]);
