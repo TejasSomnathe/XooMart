@@ -41,6 +41,7 @@ router.delete("/cart/clear", verifyJWT, clearCart);
 router.post(
   "/addProduct",
   upload.fields([{ name: "imageUrl", maxCount: 1 }]),
+  verifyJWT,
   addProduct
 );
 router.get("/products", viewProducts);

@@ -44,7 +44,7 @@ function Addproducts() {
 
     try {
       const response = await axios.post(
-        '/api/v1/users/addProduct', // replace with your exact route
+        '/api/v1/users/addProduct', 
         form,
         {
           headers: {
