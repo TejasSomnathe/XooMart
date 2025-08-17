@@ -51,32 +51,32 @@ const UserProfile = ({ onClick}) => {
    <>
    
     <div className="profile-container">
-      <div className="profile-card">
-        {user.shopImage ? (
-          <img src={user.shopImage} alt="Shop" className="profile-image" />
-        ) : (
-          <div className="profile-image placeholder">🏪</div>
-        )}
+        <div className="profile-card">
+          {user.shopImage ? (
+            <img src={user.shopImage} alt="Shop" className="profile-image" />
+          ) : (
+            <div className="profile-image placeholder">🏪</div>
+          )}
 
-        <h2 className="profile-name">{user.fullname}</h2>
-        <p className="profile-email">{user.email}</p>
+          <h2 className="profile-name">{user.fullname}</h2>
+          <p className="profile-email">{user.email}</p>
 
-        <div className="profile-info">
-          <div><strong>Username:</strong> @{user.username}</div>
-          <div><strong>Shop Name:</strong> {user.shopname}</div>
-        </div>
+          <div className="profile-info">
+            <div><strong>Username:</strong> @{user.username}</div>
+            <div><strong>Shop Name:</strong> {user.shopname}</div>
+          </div>
     <div id="button-container">
-      <NavLink className="navlink" to="/addProduct">
-       <button style={style} onClick={onClick}  onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}>
-      Add Product
-    </button></NavLink>
-     <NavLink className="navlink" to="/myProduct">
-       <button style={style1} onClick={onClick}  onMouseEnter={() => setHovered1(true)}
-      onMouseLeave={() => setHovered1(false)}>
-      My Products
-    </button>
-    </NavLink>
+            <NavLink className="navlink" to="/addProduct">
+            <button style={style} onClick={onClick}  onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}>
+            Add Product
+          </button></NavLink>
+          <NavLink className="navlink" to="/myProduct">
+            <button style={style1} onClick={onClick}  onMouseEnter={() => setHovered1(true)}
+            onMouseLeave={() => setHovered1(false)}>
+            My Products
+          </button>
+          </NavLink>
     </div>
       </div>
     </div>
