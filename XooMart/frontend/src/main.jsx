@@ -14,6 +14,7 @@ import Login from "./components/Login/Login.jsx";
  import Profile from "./components/Profile/Profile.jsx";
 import Addproducts from "./AddProducts/AddProducts.jsx";
 import Myproduct from "./MyProduct/Myproduct.jsx";
+import ImageSearch from "./components/ImageSearch/ImageSearch.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "myProduct",
         element:<Myproduct />
+      },
+      {
+        path:"imageSearch",
+        element:<ImageSearch />
       },
     ],
   },

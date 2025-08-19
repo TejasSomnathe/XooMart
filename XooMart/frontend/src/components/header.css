@@ -17,9 +17,10 @@
 .header-mid {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex: 2;
+  max-width: fit-content;
 }
 
 .header-right {
@@ -91,9 +92,6 @@
 }
 
 @media (max-width: 555px) {
-  .header-mid-left {
-    display: none;
-  }
   .header-mid-right button {
     padding: 0;
     height: 1.9rem;

@@ -29,13 +29,18 @@ const productSchema = new Schema(
       min: 0,
     },
     imageUrl: {
-      type: String, // URL to the product image
+      type: String,
       required: false,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // or whatever your user model is named
+      ref: "User",
       required: true,
+    },
+    embedding: {
+      type: [Number],
+      default: [],
+      index: "2dsphere",
     },
   },
   { timestamps: true }

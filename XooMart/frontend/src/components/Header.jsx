@@ -49,10 +49,7 @@ function Header() {
 
 
           
-            <div className='header-mid-right'>
-              <input type="text" placeholder='Search Product' />
-              <button>🔍</button>
-            </div>
+           
         </div>
         
         <div className="header-right">

@@ -66,7 +66,12 @@ function Main() {
           type="search"
           placeholder="Search for products..."
           aria-label="Search for products"
+          
         />
+        <NavLink to="/imageSearch">
+          
+        <button>📸</button>
+        </NavLink>
         <i className="fas fa-search"></i>
       </div>
       <div className="input-group search-location">
