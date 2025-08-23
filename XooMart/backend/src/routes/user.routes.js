@@ -20,7 +20,6 @@ import {
   removeFromCart,
   clearCart,
 } from "../controllers/cart.controller.js";
-import { searchByImage } from "../controllers/imageSearch.controller.js";
 
 const router = Router();
 
@@ -48,6 +47,5 @@ router.post(
 router.get("/products", viewProducts);
 
 router.get("/myProduct", verifyJWT, getMyProducts);
-router.post("/search-image", searchByImage);
 
 export { router };
