@@ -68,10 +68,10 @@ function Product() {
           onChange={(e) => setInputValue(e.target.value)}
         />
 
-        <button type="button" className="filters-btn">
+        {/* <button type="button" className="filters-btn">
           <i className="fas fa-filter"></i>
           <span>Filters</span>
-        </button>
+        </button> */}
 
         <button type="submit" className="search-btn">
           <i className="fas fa-search"></i>
