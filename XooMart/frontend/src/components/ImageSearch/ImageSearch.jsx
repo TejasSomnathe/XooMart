@@ -1,35 +1,76 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import "./ImageSearch.css"; 
 
-export default function ImageSearch() {
-  const [file, setFile] = useState(null);
-  const [results, setResults] = useState([]);
+function ImageSearch() {
+  const [image, setImage] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const handleSearch = async () => {
-    const formData = new FormData();
-    formData.append("image", file);
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+    setProducts([]);
+    setMessage("");
+  };
 
-    const res = await fetch("http://localhost:8000/api/v1/users/search-image", {
-      method: "POST",
-      body: formData,
-    });
-    const data = await res.json();
-    setResults(data.matches);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!image) {
+      setMessage("Please select an image.");
+      return;
+    }
+    setLoading(true);
+    setMessage("");
+    try {
+      const formData = new FormData();
+      formData.append("image", image);
+
+      // Adjust the endpoint as per your backend
+      const response = await axios.post(
+        "/api/v1/users/imageSearch",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      setProducts(response.data.products || []);
+      if ((response.data.products || []).length === 0) {
+        setMessage("No similar products found.");
+      }
+    } catch (error) {
+      setMessage("Error searching products by image.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div>
-      <h2>Search Products by Image</h2>
-      <input type="file" onChange={e => setFile(e.target.files[0])} />
-      <button onClick={handleSearch}>Search</button>
-
-      <div>
-        {results.map(p => (
-          <div key={p._id}>
-            <img src={p.imageUrl} alt={p.name} width="150" />
-            <p>{p.name}</p>
+    <div className="image-search-container">
+      <form onSubmit={handleSubmit} className="image-search-form">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Searching..." : "Search by Image"}
+        </button>
+      </form>
+      {message && <div className="image-search-message">{message}</div>}
+      <div className="products-list">
+        {products.map((product) => (
+          <div key={product._id} className="product-card">
+            {product.imageUrl && (
+              <img src={product.imageUrl} alt={product.name} className="product-image" />
+            )}
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <span>₹{product.price}</span>
+            <p>{product.category}</p>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+export default ImageSearch;

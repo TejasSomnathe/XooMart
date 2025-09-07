@@ -3,6 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiErrors.js";
+import path from "path";
 
 const addProduct = asyncHandler(async (req, res) => {
   const { name, description, price, category, stockQuantity } = req.body;
@@ -105,4 +106,33 @@ const getMyProducts = asyncHandler(async (req, res) => {
     );
 });
 
-export { getProductById, viewProduct, addProduct, viewProducts, getMyProducts };
+const imageSearch = asyncHandler(async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No image uploaded." });
+  }
+
+  // Get the uploaded file's original name (or use req.file.filename)
+  const uploadedFileName = req.file.originalname || req.file.filename;
+
+  // Find products whose imageUrl contains the uploaded file's name (simple placeholder logic)
+  const products = await Product.find({
+    imageUrl: { $regex: path.parse(uploadedFileName).name, $options: "i" },
+  });
+
+  // If nothing found, return all products as fallback
+  if (!products.length) {
+    const allProducts = await Product.find();
+    return res.json({ products: allProducts });
+  }
+
+  res.json({ products });
+});
+
+export {
+  getProductById,
+  viewProduct,
+  addProduct,
+  viewProducts,
+  getMyProducts,
+  imageSearch,
+};

@@ -49,3 +49,7 @@ router.get("/products", viewProducts);
 router.get("/myProduct", verifyJWT, getMyProducts);
 
 export { router };
+
+import { imageSearch } from "../controllers/product.controller.js";
+
+router.post("/imageSearch", upload.single("image"), imageSearch);

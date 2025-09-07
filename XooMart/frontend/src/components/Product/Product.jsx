@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -67,7 +68,10 @@ function Product() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-
+         <NavLink to="/imageSearch">
+                  
+                <button>📸</button>
+                </NavLink>
         {/* <button type="button" className="filters-btn">
           <i className="fas fa-filter"></i>
           <span>Filters</span>
