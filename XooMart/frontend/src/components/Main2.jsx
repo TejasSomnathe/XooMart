@@ -17,8 +17,10 @@ function Main2() {
                 <p className="price">$799.99</p>
                 <p>Latest smartphone with advanced features and high-resolution camera.</p>
                 <p>Available at 2 stores</p>
+                <div className="featured-product-buttons">
                 <button className="btn">View Details</button>
                 <button className="btn add-to-cart">Add to Cart</button>
+                </div>
             </div>
             <div className="product-item">
                 <img src="headphones.jpg" alt="Wireless Headphones" />
@@ -26,8 +28,10 @@ function Main2() {
                 <p className="price">$249.99</p>
                 <p>Premium noise-cancelling wireless headphones with long battery life.</p>
                 <p>Available at 3 stores</p>
+                <div className="featured-product-buttons">
                 <button className="btn">View Details</button>
                 <button className="btn add-to-cart">Add to Cart</button>
+                </div>
             </div>
             <div className="product-item">
                 <img src="tshirt.jpg" alt="Casual T-Shirt" />
@@ -35,8 +39,10 @@ function Main2() {
                 <p className="price">$24.99</p>
                 <p>Comfortable cotton t-shirt for everyday wear.</p>
                 <p>Available at 2 stores</p>
+                <div className="featured-product-buttons">
                 <button className="btn">View Details</button>
                 <button className="btn add-to-cart">Add to Cart</button>
+                </div>
             </div>
             <div className="product-item">
                 <img src="laptop.jpg" alt="Laptop Pro" />
@@ -44,8 +50,10 @@ function Main2() {
                 <p className="price">$1299.99</p>
                 <p>High-performance laptop for professionals and gamers.</p>
                 <p>Available at 2 stores</p>
+                <div className="featured-product-buttons">
                 <button className="btn">View Details</button>
                 <button className="btn add-to-cart">Add to Cart</button>
+                </div>
             </div>
      
         </div>

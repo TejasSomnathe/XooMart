@@ -80,7 +80,7 @@ const viewProducts = asyncHandler(async (req, res) => {
   const query = {};
 
   if (search) {
-    query.name = { $regex: search, $options: "i" }; // case-insensitive search
+    query.name = { $regex: search, $options: "i" };
   }
 
   const products = await Product.find(query);
@@ -111,15 +111,12 @@ const imageSearch = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "No image uploaded." });
   }
 
-  // Get the uploaded file's original name (or use req.file.filename)
   const uploadedFileName = req.file.originalname || req.file.filename;
 
-  // Find products whose imageUrl contains the uploaded file's name (simple placeholder logic)
   const products = await Product.find({
     imageUrl: { $regex: path.parse(uploadedFileName).name, $options: "i" },
   });
 
-  // If nothing found, return all products as fallback
   if (!products.length) {
     const allProducts = await Product.find();
     return res.json({ products: allProducts });
